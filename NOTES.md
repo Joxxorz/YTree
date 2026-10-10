@@ -46,3 +46,7 @@ With more time I would add focused accessibility automation, more API schema val
 Codex inspected the brief and planning notes, generated the initial implementation, tests and documentation, and ran the available build/test/browser checks. It also diagnosed cloud-specific Java compiler and Maven proxy setup. The product brief determined the stack and scope; Codex proposed the inclusive calendar boundary, API structure and component separation.
 
 These are AI-assisted implementation decisions, not claims that the candidate personally authored or reviewed every line. Before submitting, the candidate should review the changes, run the documented checks locally and be able to explain the decisions below. Human ownership means accepting or changing the design after that review. This record deliberately avoids attributing unperformed human review or work to the candidate.
+
+## Optional hosted review
+
+At the user's request, deployment configuration was added after the assessment implementation: Vercel for the static React build and Render for the Java service. The frontend accepts a public API origin at build time; the backend accepts an explicit list of browser origins and the host's port. Local development remains unchanged. This does not add durable storage or authentication: public visitors share one demo state, and the service resets on restart. Codex prepared the hosting files and instructions; an actual hosted deployment must be checked separately.

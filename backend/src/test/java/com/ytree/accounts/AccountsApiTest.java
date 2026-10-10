@@ -15,6 +15,22 @@ class AccountsApiTest {
   @Autowired MockMvc mvc;
 
   @Test
+  void corsAllowsConfiguredFrontendAndRejectsOtherOrigins() throws Exception {
+    mvc.perform(
+            options("/api/accounts/hsbc/statement")
+                .header("Origin", "http://localhost:5173")
+                .header("Access-Control-Request-Method", "PUT")
+                .header("Access-Control-Request-Headers", "content-type"))
+        .andExpect(status().isOk())
+        .andExpect(header().string("Access-Control-Allow-Origin", "http://localhost:5173"));
+    mvc.perform(
+            options("/api/accounts")
+                .header("Origin", "https://unapproved.example")
+                .header("Access-Control-Request-Method", "GET"))
+        .andExpect(status().isForbidden());
+  }
+
+  @Test
   void apiRejectsBypassedUiAndMalformedRequests() throws Exception {
     mvc.perform(get("/api/accounts"))
         .andExpect(status().isOk())

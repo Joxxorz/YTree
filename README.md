@@ -57,3 +57,7 @@ The test starts fresh backend/frontend processes and exercises batch add, remove
 - Loading, validation, failure and success messages are accessible through status/alert regions.
 
 See [NOTES.md](NOTES.md) for decisions and limitations and [WALKTHROUGH.md](WALKTHROUGH.md) for a review guide.
+
+## Hosted demo
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for deploying the frontend on Vercel and the Spring Boot API on Render. Hosting configuration is included; live deployment requires connecting your accounts in those dashboards.
